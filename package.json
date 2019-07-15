@@ -4,8 +4,11 @@
   "description": "",
   "main": "main.mjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test-all": "npm run flow:build && npm run mjs-mocha \"dist/tests/integration\"",
+    "test-one": "npm run flow:build && npm run mjs-mocha ",
+    "mjs-mocha": "mjs-mocha",
     "flow": "flow",
+    "flow-typed": "flow-typed",
     "flow:build": "flow-remove-types ./src/ -d ./dist/ --all --pretty",
     "flow:check": "flow check ./src/",
     "start": "node --experimental-modules dist/app/index.mjs",
@@ -16,18 +19,21 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "chai": "^4.2.0",
+    "flow": "^0.2.3",
     "flow-bin": "^0.98.1",
     "flow-remove-types": "^1.2.3",
+    "flow-typed": "^2.5.2",
     "iflow-chartist": "^1.0.3",
-    "iflow-jquery": "^1.2.4"
+    "iflow-jquery": "^1.2.4",
+    "mjs-mocha": "^3.0.0",
+    "mocha": "^6.1.4"
   },
   "dependencies": {
     "@types/cheerio": "^0.22.11",
     "axios": "^0.18.0",
     "cheerio": "^1.0.0-rc.3",
-    "flow-typed": "^2.5.2",
-    "jquery": "^3.4.1",
-    "jsdom": "^15.1.0",
-    "query-string": "^6.5.0"
+    "objects-to-csv": "^1.2.1",
+    "qs": "^6.7.0"
   }
 }

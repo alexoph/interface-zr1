@@ -1,15 +1,16 @@
 import {
     Estudiante,
-    EntradaParaBusquedaEstudiante,
+    StudentSearchInput,
     TipoBusquedaEstudianteEnum
-} from "../models/index.mjs";
-import type { TipoBusquedaEstudianteType }  from "../models/index.mjs";
+} from "../../models/index.mjs";
+import type { TipoBusquedaEstudianteType }  from "../../models/index.mjs";
 import { printElement } from "./cheerio.mjs";
 import cheerio  from "cheerio";
 
 function extractStudentsResultTrs($: CheerioStatic): Cheerio {
-    return $('table').first().find('tbody > tr[bgcolor="#CCCCCC"], tr[bgcolor="#FFFFFF"]')
+    return $('table').first().find('tbody > tr[bgcolor="#CCCCCC"],tr[bgcolor="#FFFFFF"]')
 }
+
 function extractStudentResultFromTr(el: CheerioElement): Estudiante {
     
     const resultado = new Estudiante();
@@ -34,7 +35,7 @@ function extractStudentResultFromTr(el: CheerioElement): Estudiante {
    Digite los apellidos del estudiante, y luego haga la búsqueda del mismo, haciendo clic sobre el botón . Seleccione el estudiante de interés; luego haga clic en el botón: Consultar Estudiante
    Digite los apellidos del estudiante y el nombre, usando entre ellos un guión ( - ), Ejemplo: Quintero-Carlos , y luego haga la búsqueda del mismo, haciendo clic sobre el botón . Seleccione el estudiante de interés; luego haga clic en el botón: Consultar Estudiante
  */
-export function getSearchPatron(input: EntradaParaBusquedaEstudiante, method?: TipoBusquedaEstudianteType ) : string  {
+export function getSearchPatron(input: StudentSearchInput, method?: TipoBusquedaEstudianteType ) : string|typeof undefined  {
     if(method === undefined) {
         method = TipoBusquedaEstudianteEnum.documento;
     }
@@ -42,7 +43,7 @@ export function getSearchPatron(input: EntradaParaBusquedaEstudiante, method?: T
         case TipoBusquedaEstudianteEnum.apellidos: 
         return input.apellidos;
         case TipoBusquedaEstudianteEnum.apellidos_nombres:
-        return `${input.apellidos}-${input.nombres}`;
+        return `${input.apellidos? input.apellidos: ''}-${input.nombres? input.nombres: ''}`;
         case TipoBusquedaEstudianteEnum.documento:
         return input.doc_number;
         case TipoBusquedaEstudianteEnum.codigoCompleto:
@@ -51,11 +52,14 @@ export function getSearchPatron(input: EntradaParaBusquedaEstudiante, method?: T
         return '';
     }
 }
+
+
 export function extractStudentsResults(html: any /** string */): Estudiante[] {
   
     var results: Estudiante[] = [];
     var $ = cheerio.load(html);
     const trs = extractStudentsResultTrs($);
+  
     trs.map((index, el: CheerioElement) => {
         results.push(extractStudentResultFromTr(el));
     }

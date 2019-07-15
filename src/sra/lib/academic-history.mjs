@@ -1,11 +1,38 @@
-import { RegistrosHistorialAcademico } from "../models/RegistrosHistorialAcademico.mjs";
-import { RegistroHistorialAcademico } from "../models/RegistroHistorialAcademico.mjs";
+import { RegistrosHistorialAcademico } from "../../models/RegistrosHistorialAcademico.mjs";
+import { RegistroHistorialAcademico } from "../../models/RegistroHistorialAcademico.mjs";
 import cheerio  from "cheerio";
-import { RegistroNota } from "../models/RegistroNota.mjs";
+import { RegistroNota } from "../../models/RegistroNota.mjs";
 function getPeriodTables($: CheerioStatic): Cheerio {
     return $('table[width="95%"]table[cellspacing="1"]table[align="center"]');
 }
 
+function getStudentInfoList($: CheerioStatic): Cheerio {
+    return $('img[src*="ico_personal.gif"]')
+    .parent()
+    .parent()
+    .find('b');
+
+}
+
+
+function extractStudentInfo($: CheerioStatic, registros: RegistrosHistorialAcademico) {
+    const infoList = getStudentInfoList($);
+    const documentTypeAndDocumentNumber = infoList.get(1).firstChild.data.split(' '); // C.C 1058847077
+    const [_, document] = documentTypeAndDocumentNumber;
+    registros.documento = document;
+    const programCodeAndSedCodeAndStudyTimeAndProgramName = infoList.get(2).firstChild.data.split('-') // 3746-00-DIU-MATEMATICAS
+    const [programCode, sedCode, __, programName] = programCodeAndSedCodeAndStudyTimeAndProgramName;
+    registros.codigo_programa = programCode;
+    registros.codigo_sede = sedCode;
+    registros.nombre_programa = programName.trim();
+    const studentCodeAndStudentName = infoList.get(0).firstChild.data.split(' -- ');// 201522006 -- ARTEAGA ESTACIO GUSTAVO ADOLFO 
+    const [studentCode, studentName] = studentCodeAndStudentName;
+    registros.nombre_estudiante = studentName.trim();
+    registros.codigo_estudiante = studentCode.trim();
+}
+/**
+ * 
+ */
 function extractGradeRegistry(el: CheerioElement) : any {
     if(! (el && el.childNodes) ) {
         return
@@ -60,7 +87,8 @@ function extractGrades($: CheerioStatic): Array<RegistroNota> {
     return grades;
 }
 function extractPeriodNameFromTable($: CheerioStatic): string {
-    return $('td').first().text().trim();
+    const periodText =  $('td').first().text().trim();
+    return periodText.replace('PERIODO: ', '');
 }
 function isLowAcademicPerformancePeriod($: CheerioStatic): bool {
     const title = "Bajos Rendimientos";
@@ -86,6 +114,10 @@ function isCanceledSemester($: CheerioStatic): bool {
         const tdData = (td.firstChild? td.firstChild.data: '');
         if(tdData && tdData.trim().includes("Fecha Cancelaci")) {
             isCanceled = true;
+        }
+        // sad way to return false if the semester was canceled but also was reenabled
+        if(tdData && tdData.trim().includes("Fecha Reactivac")) {
+            isCanceled = false;
         }
     });
     return isCanceled;
@@ -118,7 +150,7 @@ function getTotalAverage($: CheerioStatic): string {
     return $('.error').find('font').find('b').text();
 }
 
-export  function htmlToAcademicRegistries(html: any): RegistrosHistorialAcademico {
+export  function htmlToAcademicRegistries(html: any /** string */): RegistrosHistorialAcademico {
     const historialAcademico = new RegistrosHistorialAcademico();
     var $ = cheerio.load(html);
     const periodTables = getPeriodTables($);
@@ -128,5 +160,6 @@ export  function htmlToAcademicRegistries(html: any): RegistrosHistorialAcademic
         let registro = periodTableToAcademicRegistry(table);
         historialAcademico.registros.push(registro);
     });
+    extractStudentInfo($, historialAcademico);
     return historialAcademico;
 }
