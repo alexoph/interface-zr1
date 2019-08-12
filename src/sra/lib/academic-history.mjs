@@ -49,7 +49,9 @@ function extractGradeRegistry(el: CheerioElement) : any {
         }
         const nombre = el.childNodes[5].firstChild.data;
         const nota = el.childNodes[9].firstChild.data;
+        const creditos = el.childNodes[17].firstChild.data;
         grade.nota = nota? nota.trim(): '';
+        grade.creditos = creditos? creditos.trim(): '';
         const fechaCancela = el.childNodes[19].firstChild? el.childNodes[19].firstChild.data: '';
         const fechaReactiva = el.childNodes[21].firstChild? el.childNodes[21].firstChild.data: '';
         grade.nombre_materia = nombre? nombre.trim(): '';

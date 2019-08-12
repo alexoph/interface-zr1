@@ -12,6 +12,7 @@ import type { TipoBusquedaEstudianteType } from '../../models/index.mjs';
 import type { AxiosPromise } from 'axios';
 import { extractStudentResolution } from "../lib/student-academic-folder.mjs";
 import { htmlToAcademicRegistries } from "../lib/academic-history.mjs";
+const ErrEmptyRegistries = "Error, empty registries";
 export interface StudentsServiceInterface {
     apiService: ApiServiceInterface;
     getStudentPeriods(student: Estudiante): Promise<Date[]>;
@@ -110,7 +111,7 @@ class PostForAcademicHistoryDetail {
 
     Ventana;
     versionImprimible;
-    constructor(hia_est_codigo, hia_per_codigo, hia_pra_codigo, hia_sed_codigo, hia_rep_codigo, tipo_carpeta = 'COMPLETA', hia_jor_codigo='DIU')
+    constructor(hia_est_codigo, hia_per_codigo, hia_pra_codigo, hia_sed_codigo, hia_rep_codigo, hia_jor_codigo, tipo_carpeta = 'COMPLETA')
     {
         this.accion = 'mostrarDetalleUnaCarpeta';
         this.hia_est_codigo = hia_est_codigo;
@@ -234,15 +235,18 @@ export class StudentsService implements StudentsServiceInterface{
         let url = '/paquetes/academica/index.php';
         if(student.codigo_resolucion === undefined || student.codigo_resolucion === '' ) {
             student.codigo_resolucion = await this.getStudentResolution(student);
+            console.log(student.codigo_resolucion, "Codigo de resolucion");
         }
         const data = new PostForAcademicHistoryDetail(
             student.codigo_estudiante,
             student.codigo_persona,
             student.codigo_programa,
             student.codigo_sede,
-            student.codigo_resolucion
+            student.codigo_resolucion,
+            student.jornada
         );
         const html = await this.apiService.post(url, data.get_url_query());
+        console.log(data.get_url_query());
    
         if(saveHtmlFiles) {
             // $FlowFixMe
@@ -258,6 +262,9 @@ export class StudentsService implements StudentsServiceInterface{
                 });
         } 
         const academicHistory = htmlToAcademicRegistries(html);
+        if(academicHistory.registros === undefined ||academicHistory.registros.length === 0){
+            throw ErrEmptyRegistries;
+        }
         academicHistory.codigo_estudiante = student.codigo_estudiante;
         return academicHistory;
     }
