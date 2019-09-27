@@ -49,7 +49,9 @@ function extractGradeRegistry(el: CheerioElement) : any {
         }
         const nombre = el.childNodes[5].firstChild.data;
         const nota = el.childNodes[9].firstChild.data;
+        const creditos = el.childNodes[17].firstChild.data;
         grade.nota = nota? nota.trim(): '';
+        grade.creditos = creditos? creditos.trim(): '';
         const fechaCancela = el.childNodes[19].firstChild? el.childNodes[19].firstChild.data: '';
         const fechaReactiva = el.childNodes[21].firstChild? el.childNodes[21].firstChild.data: '';
         grade.nombre_materia = nombre? nombre.trim(): '';
@@ -143,7 +145,14 @@ function periodTableToAcademicRegistry(el: CheerioElement): RegistroHistorialAca
     registro.cancelo_semestre = isCanceledSemester($); 
     let cancelperiodDate =  getCancelPeriodDate($);
     registro.fecha_cancelacion_semestre = cancelperiodDate;
+    //registro.estado_grado = getGraduatedStatus;
     return registro;
+}
+
+function getGraduatedStatus($: CheerioStatic): string {
+    if($('.normalNegroB').first().text() === 'ESTUDIANTE GRADUADO'){
+        return 'SI';
+    }else return 'NO';
 }
 
 function getTotalAverage($: CheerioStatic): string {
@@ -155,6 +164,7 @@ export  function htmlToAcademicRegistries(html: any /** string */): RegistrosHis
     var $ = cheerio.load(html);
     const periodTables = getPeriodTables($);
     historialAcademico.promedio_actual_acumulado = getTotalAverage($);
+    historialAcademico.estado_grado = getGraduatedStatus($);
    
     periodTables.each((key: number, table)=> {
         let registro = periodTableToAcademicRegistry(table);

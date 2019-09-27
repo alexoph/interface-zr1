@@ -3,12 +3,12 @@ import { htmlToAcademicRegistries } from '../sra/lib/academic-history';
 import { TipoBusquedaEstudianteEnum, StudentSearchInput, RegistrosHistorialAcademico, Estudiante } from "../models/index.mjs";
 import { document_numbers } from "./docs_to_download.mjs";
 import { codes } from "./codes_to_download.mjs";
-
+import colors from "colors";
 import fs from 'fs';
 // $FlowFixMe
 import  ObjectsToCsv from 'objects-to-csv';
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-var appKernel = new Kernel("PHPSESSID=ae9bdd8db428e0e88e84fa5385d2a173");
+var appKernel = new Kernel("PHPSESSID=9779784338a9b53f1e975532ba724e63");
 /**
  * Buscar el PHPSESSID en cada sesion
  */
@@ -60,6 +60,7 @@ function academic_history_object_to_semestral_rows(object: RegistrosHistorialAca
     const rows = [];
 	const registro = {
         promedio_actual_acumulado: object.promedio_actual_acumulado,
+        estado_grado: object.estado_grado,
         documento: object.documento,
         codigo_estudiante: object.codigo_estudiante,
         codigo_programa: object.codigo_programa,
@@ -96,6 +97,11 @@ function academic_history_object_to_rows(object: RegistrosHistorialAcademico) {
 	}
 	return rows;
 }
+
+/**
+ * Function that takes an array and writes it to a file of a given name
+ */
+
 /*
 
 Extrae informacion de los archivos descargados y los guarda en un json
@@ -206,22 +212,40 @@ function main() {
   */
  async function main() {
 
+     let failedCodes = [];
+
      const registries: Array<RegistrosHistorialAcademico> = [];
       for(let code of codes ) {
           let input = new StudentSearchInput();
-          let failedCodes = [];
           input.codigo_estudiante = String(code);
           var searchResult = await appKernel.studentService.searchStudent(input, TipoBusquedaEstudianteEnum.codigoCompleto);
-         console.log(searchResult, 'search result', code, "code");
+          console.log(searchResult, 'search result', code, "code");
          if(searchResult.length===0) {
              console.error(`El estudiante con código ${code} no se ha encontrado`);
              failedCodes.push(code);
-         } else {
-             var academicHistory = await appKernel.studentService.getStudentAcademicHistory(searchResult[0]);
-             registries.push(academicHistory);
+             console.log(failedCodes, 'failed codes');
+             continue;
          }
-         console.log(failedCodes, 'failed codes');
 
+          let academicHistory = [];
+          try{
+              //console.log(searchResult);
+
+              for(let result of searchResult){
+                  //console.log(await appKernel.studentService.getStudentAcademicHistory(result));
+                  academicHistory.push(await appKernel.studentService.getStudentAcademicHistory(result));
+              }
+         }
+         catch(e){
+             //console.error(e.red, ` in code ${code}`);
+             failedCodes.push(code);
+             continue;
+         }
+
+         for(let history of academicHistory){
+             //console.log(history);
+             registries.push(history);
+         }
      }
 
      /**
@@ -230,15 +254,25 @@ function main() {
 
      var porcurso = [];
      var porsemestre = [];
+     //console.log(registries[0], "registry");
      registries.forEach(registry => {
-         //porcurso = porcurso.concat(academic_history_object_to_rows(registry));
+         porcurso = porcurso.concat(academic_history_object_to_rows(registry));
          porsemestre = porsemestre.concat(academic_history_object_to_semestral_rows(registry));
      });
      //console.log(porcurso[0]);
-     console.log(porsemestre[0]);
-     //new ObjectsToCsv(porcurso).toDisk('./csv-files/academic-histories-by-course-general.csv');
-     new ObjectsToCsv(porsemestre).toDisk('./csv-files/prueba1.csv');
+     //console.log(porsemestre[0], "prueba");
+     console.log(failedCodes, 'failed codes');
+     save_error_codes(failedCodes);
+     new ObjectsToCsv(porcurso).toDisk('./csv-files/cursos-23Septiembre-Ases.csv');
+     new ObjectsToCsv(porsemestre).toDisk('./csv-files/semestres-23Septiembre-Ases.csv');
+ }
 
+
+ function save_error_codes(failedCodes){
+     new fs.appendFile('./csv-files/Errores.txt', failedCodes, function (err) {
+         if (err) throw err;
+         console.log('Se han guardado los errores');
+     });
  }
 
 /**

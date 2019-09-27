@@ -9,4 +9,5 @@ export class Estudiante {
     jornada: string;
     documento: string;
     codigo_programa: string;
+    graduado: string;
 }

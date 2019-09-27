@@ -3,6 +3,7 @@ import { RegistroHistorialAcademico } from "./RegistroHistorialAcademico.mjs";
 export class RegistrosHistorialAcademico {
 
     promedio_actual_acumulado: string;
+    estado_grado: string;
     /**
      * @var array Array de RegistroHistorialAcademico
      */
