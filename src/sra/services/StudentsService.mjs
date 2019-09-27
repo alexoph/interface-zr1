@@ -228,6 +228,7 @@ export class StudentsService implements StudentsServiceInterface{
         const params = { opcion: 'estudianteConsulta', variableCalculada: 0, patron  }
      
         const response = await this.apiService.get(url, params);
+        //return response;
         const results = extractStudentsResults(response);
         return results;
     }
@@ -235,7 +236,7 @@ export class StudentsService implements StudentsServiceInterface{
         let url = '/paquetes/academica/index.php';
         if(student.codigo_resolucion === undefined || student.codigo_resolucion === '' ) {
             student.codigo_resolucion = await this.getStudentResolution(student);
-            console.log(student.codigo_resolucion, "Codigo de resolucion");
+            //console.log(student.codigo_resolucion, "Codigo de resolucion");
         }
         const data = new PostForAcademicHistoryDetail(
             student.codigo_estudiante,
@@ -246,7 +247,7 @@ export class StudentsService implements StudentsServiceInterface{
             student.jornada
         );
         const html = await this.apiService.post(url, data.get_url_query());
-        console.log(data.get_url_query());
+        //console.log(data.get_url_query());
    
         if(saveHtmlFiles) {
             // $FlowFixMe

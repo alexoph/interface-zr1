@@ -8,7 +8,7 @@ import fs from 'fs';
 // $FlowFixMe
 import  ObjectsToCsv from 'objects-to-csv';
 process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';
-var appKernel = new Kernel("PHPSESSID=89957cf7776d19e59ce5f7f2b92805a5");
+var appKernel = new Kernel("PHPSESSID=9779784338a9b53f1e975532ba724e63");
 /**
  * Buscar el PHPSESSID en cada sesion
  */
@@ -60,6 +60,7 @@ function academic_history_object_to_semestral_rows(object: RegistrosHistorialAca
     const rows = [];
 	const registro = {
         promedio_actual_acumulado: object.promedio_actual_acumulado,
+        estado_grado: object.estado_grado,
         documento: object.documento,
         codigo_estudiante: object.codigo_estudiante,
         codigo_programa: object.codigo_programa,
@@ -218,7 +219,7 @@ function main() {
           let input = new StudentSearchInput();
           input.codigo_estudiante = String(code);
           var searchResult = await appKernel.studentService.searchStudent(input, TipoBusquedaEstudianteEnum.codigoCompleto);
-         console.log(searchResult, 'search result', code, "code");
+          console.log(searchResult, 'search result', code, "code");
          if(searchResult.length===0) {
              console.error(`El estudiante con código ${code} no se ha encontrado`);
              failedCodes.push(code);
@@ -226,17 +227,25 @@ function main() {
              continue;
          }
 
-          let academicHistory;
+          let academicHistory = [];
           try{
-             academicHistory = await appKernel.studentService.getStudentAcademicHistory(searchResult[0]);
+              //console.log(searchResult);
+
+              for(let result of searchResult){
+                  //console.log(await appKernel.studentService.getStudentAcademicHistory(result));
+                  academicHistory.push(await appKernel.studentService.getStudentAcademicHistory(result));
+              }
          }
          catch(e){
-             console.error(e.red, ` in code ${code}`);
+             //console.error(e.red, ` in code ${code}`);
              failedCodes.push(code);
              continue;
          }
 
-         registries.push(academicHistory);
+         for(let history of academicHistory){
+             //console.log(history);
+             registries.push(history);
+         }
      }
 
      /**
@@ -245,17 +254,17 @@ function main() {
 
      var porcurso = [];
      var porsemestre = [];
-     console.log(registries[0], "registry");
+     //console.log(registries[0], "registry");
      registries.forEach(registry => {
          porcurso = porcurso.concat(academic_history_object_to_rows(registry));
          porsemestre = porsemestre.concat(academic_history_object_to_semestral_rows(registry));
      });
      //console.log(porcurso[0]);
-     console.log(porsemestre[0], "prueba");
+     //console.log(porsemestre[0], "prueba");
      console.log(failedCodes, 'failed codes');
      save_error_codes(failedCodes);
-     new ObjectsToCsv(porcurso).toDisk('./csv-files/pruebacursos.csv');
-     new ObjectsToCsv(porsemestre).toDisk('./csv-files/pruebaSemestre.csv');
+     new ObjectsToCsv(porcurso).toDisk('./csv-files/cursos-23Septiembre-Ases.csv');
+     new ObjectsToCsv(porsemestre).toDisk('./csv-files/semestres-23Septiembre-Ases.csv');
  }
 
 

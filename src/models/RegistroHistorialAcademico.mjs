@@ -38,6 +38,10 @@ export class RegistroHistorialAcademico {
      * @var integer
      */
     puesto_estimulo: number;
+    /**
+     * @var string
+     */
+    estado_grado: string;
 
 
 }

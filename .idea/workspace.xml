@@ -2,17 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fc56c212-f2e4-4797-828b-c6475dbe14ce" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.README.md.swp" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/csv-files/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/csv-files/prueba1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/historicos-academicos/201102743-7273.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/historicos-academicos/201526857-3740.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/historicos-academicos/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/historicos-academicos/201527433-3841.html" beforeDir="false" afterPath="$PROJECT_DIR$/historicos-academicos/201527433-3841.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/historicos-academicos/201630531-3743.html" beforeDir="false" afterPath="$PROJECT_DIR$/historicos-academicos/201630531-3743.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/codes_to_download.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/codes_to_download.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/app/index.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/index.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/Estudiante.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/Estudiante.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/RegistroHistorialAcademico.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/RegistroHistorialAcademico.mjs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/RegistrosHistorialAcademico.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/RegistrosHistorialAcademico.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sra/lib/academic-history.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/sra/lib/academic-history.mjs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sra/services/StudentsService.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/src/sra/services/StudentsService.mjs" afterDir="false" />
     </list>
@@ -24,11 +21,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/app/index.mjs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="230" column="74" selection-start-line="230" selection-start-column="74" selection-end-line="230" selection-end-column="74" />
+            <state relative-caret-position="45">
+              <caret line="235" column="92" selection-start-line="235" selection-start-column="92" selection-end-line="235" selection-end-column="92" />
               <folding>
                 <element signature="e#0#43#0" expanded="true" />
               </folding>
@@ -36,20 +33,35 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sra/services/StudentsService.mjs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="282">
-              <caret line="245" column="27" selection-start-line="245" selection-start-column="27" selection-end-line="245" selection-end-column="27" />
+            <state relative-caret-position="381">
+              <caret line="264" column="50" selection-start-line="264" selection-start-column="50" selection-end-line="264" selection-end-column="50" />
+              <folding>
+                <element signature="e#0#114#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/models/Estudiante.mjs">
+        <entry file="file://$PROJECT_DIR$/src/sra/lib/academic-history.mjs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+            <state relative-caret-position="260">
+              <caret line="157" column="52" selection-start-line="157" selection-start-column="52" selection-end-line="157" selection-end-column="52" />
+              <folding>
+                <element signature="e#0#91#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/models/RegistrosHistorialAcademico.mjs">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -58,7 +70,7 @@
         <entry file="file://$PROJECT_DIR$/src/app/codes_to_download.mjs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="4" column="51" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
+              <caret line="4" column="22289" selection-start-line="4" selection-start-column="22289" selection-end-line="4" selection-end-column="22289" />
             </state>
           </provider>
         </entry>
@@ -71,6 +83,8 @@
       <find>main</find>
       <find>getstudentaca</find>
       <find>PostForAcademicHistoryDetail</find>
+      <find>in code</find>
+      <find>console.log</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -80,10 +94,14 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/app/docs_to_download.mjs" />
-        <option value="$PROJECT_DIR$/src/sra/lib/academic-history.mjs" />
-        <option value="$PROJECT_DIR$/src/app/index.mjs" />
-        <option value="$PROJECT_DIR$/src/app/codes_to_download.mjs" />
+        <option value="$PROJECT_DIR$/src/models/Estudiante.mjs" />
         <option value="$PROJECT_DIR$/src/sra/services/StudentsService.mjs" />
+        <option value="$PROJECT_DIR$/src/sra/lib/search-student.mjs" />
+        <option value="$PROJECT_DIR$/src/models/RegistroHistorialAcademico.mjs" />
+        <option value="$PROJECT_DIR$/src/models/RegistrosHistorialAcademico.mjs" />
+        <option value="$PROJECT_DIR$/src/sra/lib/academic-history.mjs" />
+        <option value="$PROJECT_DIR$/src/app/codes_to_download.mjs" />
+        <option value="$PROJECT_DIR$/src/app/index.mjs" />
       </list>
     </option>
   </component>
@@ -107,7 +125,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -115,31 +132,15 @@
               <item name="interface-zr1" type="b2602c69:ProjectViewProjectNode" />
               <item name="interface-zr1" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="interface-zr1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="interface-zr1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="interface-zr1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="interface-zr1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="interface-zr1" type="b2602c69:ProjectViewProjectNode" />
-              <item name="interface-zr1" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="/usr/local/www/apache24/data/moodle35" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -183,18 +184,27 @@
       <workItem from="1564990517975" duration="5626000" />
       <workItem from="1565020193227" duration="1459000" />
       <workItem from="1565365220506" duration="1765000" />
-      <workItem from="1565613980031" duration="3919000" />
+      <workItem from="1565613980031" duration="3929000" />
+      <workItem from="1565793643450" duration="2158000" />
+      <workItem from="1565880237981" duration="1706000" />
+      <workItem from="1565975057478" duration="668000" />
+      <workItem from="1566593002653" duration="1753000" />
+      <workItem from="1567452777031" duration="151000" />
+      <workItem from="1567626524090" duration="8297000" />
+      <workItem from="1567711454585" duration="725000" />
+      <workItem from="1568833771173" duration="1238000" />
+      <workItem from="1569253320243" duration="13575000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38876000" />
+    <option name="totallyTimeSpent" value="69157000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="31" width="1606" height="872" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.30359435" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.338896" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -207,7 +217,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.129506" />
+      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.129506" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="TypeScript" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -236,37 +246,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/StudentSearchInput.mjs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sra/kernel.mjs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="15" column="33" lean-forward="true" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/infraestructures/SRAHandler.mjs">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/RegistroNota.mjs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="13" selection-start-line="1" selection-start-column="13" selection-end-line="1" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sra/lib/academic-history.mjs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2265">
-          <caret line="154" column="33" selection-start-line="154" selection-start-column="33" selection-end-line="154" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#91#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -284,13 +267,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/models/RegistrosHistorialAcademico.mjs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sra/mocks/students.mjs">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -305,34 +281,111 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/infraestructures/SRAHandler.mjs">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/kernel.mjs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#89#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/StudentSearchInput.mjs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/TipoBusquedaEstudianteEnum.mjs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sra/kernel.mjs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="28" column="64" selection-start-line="28" selection-start-column="64" selection-end-line="28" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/models/Estudiante.mjs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="20" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+        <state>
+          <caret column="13" selection-start-column="13" selection-end-column="13" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/codes_to_download.mjs">
+    <entry file="file://$PROJECT_DIR$/src/sra/services/ApiService.mjs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="51" selection-start-line="4" selection-start-column="51" selection-end-line="4" selection-end-column="51" />
+        <state relative-caret-position="195">
+          <caret line="17" column="4" selection-start-line="17" selection-start-column="4" selection-end-line="17" selection-end-column="4" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/app/index.mjs">
+    <entry file="file://$PROJECT_DIR$/src/sra/lib/search-student.mjs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="230" column="74" selection-start-line="230" selection-start-column="74" selection-end-line="230" selection-end-column="74" />
+        <state relative-caret-position="135">
+          <caret line="9" column="62" selection-start-line="9" selection-start-column="62" selection-end-line="10" selection-end-column="89" />
           <folding>
-            <element signature="e#0#43#0" expanded="true" />
+            <element signature="e#0#112#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/RegistrosHistorialAcademico.mjs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="25" selection-start-line="5" selection-start-column="25" selection-end-line="5" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/models/RegistroHistorialAcademico.mjs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="28" column="7" selection-start-line="28" selection-start-column="7" selection-end-line="28" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sra/lib/academic-history.mjs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="157" column="52" selection-start-line="157" selection-start-column="52" selection-end-line="157" selection-end-column="52" />
+          <folding>
+            <element signature="e#0#91#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/sra/services/StudentsService.mjs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="282">
-          <caret line="245" column="27" selection-start-line="245" selection-start-column="27" selection-end-line="245" selection-end-column="27" />
+        <state relative-caret-position="381">
+          <caret line="264" column="50" selection-start-line="264" selection-start-column="50" selection-end-line="264" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#114#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/codes_to_download.mjs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="22289" selection-start-line="4" selection-start-column="22289" selection-end-line="4" selection-end-column="22289" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/app/index.mjs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="235" column="92" selection-start-line="235" selection-start-column="92" selection-end-line="235" selection-end-column="92" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
